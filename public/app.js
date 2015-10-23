@@ -11,8 +11,8 @@ function something()
 	
 }
 
-function add_to_cart()
+function add_to_cart(id)
 {
-	alert('Hello from function!');
-	
+	alert('You added pizza with id: ' + id);
+
 }
