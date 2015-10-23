@@ -2,12 +2,11 @@
 <button class="btn btn-primary" onclick="something()">Click me!</button>
 
 
-
-<% @product.each do |p|%>
-<p>
-	product
-</p>
-
-<% end %>
-
+<div class="row">
+	<% @product.each do |p|%>
+	 <div class="col-md-3">
+	 	<div class="row"><%=p.title%></div>
+	 </div>
+	<% end %>
+</div>
 
