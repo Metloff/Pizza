@@ -5,21 +5,23 @@
   <thead>
   	<tr>
   		<th>#</th>
-  		<th>Пицца</th>
+  		<th>Название</th>
+      <th>Цена (1 шт.)</th>
   		<th>Количество</th>
   	</tr>
   </thead>
 
   <tbody>
-	<%i = 0 %>
-  	<% @hh.each do |key, value|%>
+  <%i = 0 %>
+    <% @items.each do |item|%>
 
-	  <% i = i + 1%>
-	  <tr>
-	  		<th><%=i%></th>
-	  		<th><%=@hh1[key]%></th>
-	  		<th><%=value%></th>
-	  </tr>
-	  <%end%>
+    <% i = i + 1%>
+    <tr>
+        <th><%=i%></th>
+        <th><%=item[0].title%></th>
+        <th><%=item[0].price%></th>
+        <th><%=item[1]%></th>
+    </tr>
+    <%end%>
   </tbody>
 </table>

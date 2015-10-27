@@ -21,24 +21,41 @@ end
 
 post '/cart' do
 
-	@hh = {}
-	@hh1 = {
-		'1' => "Hawaiian",
-		'2' => "Pepperoni",
-		'3' => "Vegeterian"
-	}
 
-	order = params[:orders]
-	s1 = order.split(/,/)
-	
-	s1.each do |x|
-		
-		s2 = x.split("=")
-		s3 = s2[0].split (/_/)
+	orders_input = params[:orders]
+	@items = parse_orders_input orders_input
 
-		@hh[s3[1]] = s2[1]
+	@items.each do |item|
+		item[0] = Product.find(item[0])
 
 	end
 
+
 	erb :cart
+end
+
+
+
+def parse_orders_input orders_input
+
+	s1 = orders_input.split(/,/)
+
+	arr = []
+
+	s1.each do |x|
+		
+		s2 = x.split("=")
+
+		s3 = s2[0].split (/_/)
+
+		id = s3[1]
+		cnt = s2[1]
+
+		arr2 = [id, cnt]
+
+		arr.push arr2
+
+	end
+
+	return arr
 end
