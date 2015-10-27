@@ -1,0 +1,25 @@
+<h3>Список заказов:</h3>
+
+<br />
+<table class="table table-striped">
+  <thead>
+  	<tr>
+  		<th>#</th>
+  		<th>Пицца</th>
+  		<th>Количество</th>
+  	</tr>
+  </thead>
+
+  <tbody>
+	<%i = 0 %>
+  	<% @hh.each do |key, value|%>
+
+	  <% i = i + 1%>
+	  <tr>
+	  		<th><%=i%></th>
+	  		<th><%=@hh1[key]%></th>
+	  		<th><%=value%></th>
+	  </tr>
+	  <%end%>
+  </tbody>
+</table>
