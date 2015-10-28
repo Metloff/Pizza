@@ -10,6 +10,10 @@ class Product < ActiveRecord::Base
 
 end
 
+class Order < ActiveRecord::Base
+
+end
+
 get '/' do
 	@product = Product.all
 	erb :index 
