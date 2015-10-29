@@ -1,62 +1,68 @@
+
 <h3>Список заказов:</h3>
 
-<br />
-<table class="table table-striped">
-  <thead>
-  	<tr>
-  		<th>#</th>
-  		<th>Название</th>
-      <th>Цена (1 шт.)</th>
-  		<th>Количество</th>
-  	</tr>
-  </thead>
+<div id="cart">
 
-  <tbody>
-  <% total_price = 0 %>
-  <% total_qty = 0 %>
-  <%i = 0 %>
-    <% @items.each do |item|%>
+  <br />
+  <table class="table table-striped">
+    <thead>
+    	<tr>
+    		<th>#</th>
+    		<th>Название</th>
+        <th>Цена (1 шт.)</th>
+    		<th>Количество</th>
+    	</tr>
+    </thead>
 
-    <% i = i + 1%>
-    <tr>
-        <th><%=i%></th>
-        <th><%=item[0].title%></th>
-        <th><%=item[0].price%></th>
-        <th><%=item[1]%></th>
-    </tr>
-    <% total_price += item[0].price * item[1].to_i %>
-    <% total_qty += item[1].to_i %>
-    <%end%>
+    <tbody>
+    <% total_price = 0 %>
+    <% total_qty = 0 %>
+    <%i = 0 %>
+      <% @items.each do |item|%>
 
-    <tr>
-        <th></th>
-        <th></th>
-        <th>Total: <%=total_price %> Rub.</th>
-        <th><%=total_qty%></th>
-        
-    </tr>
-  </tbody>
-</table>
+      <% i = i + 1%>
+      <tr>
+          <th><%=i%></th>
+          <th><%=item[0].title%></th>
+          <th><%=item[0].price%></th>
+          <th><%=item[1]%></th>
+      </tr>
+      <% total_price += item[0].price * item[1].to_i %>
+      <% total_qty += item[1].to_i %>
+      <%end%>
 
-<form action="/place_order" method="POST" role="form">
+      <tr>
+          <th></th>
+          <th></th>
+          <th>Total: <%=total_price %> Rub.</th>
+          <th><%=total_qty%></th>
+          
+      </tr>
+    </tbody>
+  </table>
 
-<input name="orders[orders_input]" type="hidden" value="<%= @orders_input%>">
+  <form action="/place_order" method="POST" role="form">
 
- <div class="form-group">
-    <label>Имя:</label>
-    <input name="order[name]" type="text" class="form-control" placeholder="Ваше имя" >
-  </div>
+  <input name="orders[orders_input]" type="hidden" value="<%= @orders_input%>">
 
-  <div class="form-group">
-    <label>Телефон:</label>
-    <input name="order[phone]" type="text" class="form-control" placeholder="Ваш телефон" >
-  </div>
+   <div class="form-group">
+      <label>Имя:</label>
+      <input name="order[name]" type="text" class="form-control" placeholder="Ваше имя" >
+    </div>
 
     <div class="form-group">
-    <label>Адресс:</label>
-    <textarea name="order[address]" type="text" class="form-control" placeholder="Ваш адресс" ></textarea>
-  </div>
+      <label>Телефон:</label>
+      <input name="order[phone]" type="text" class="form-control" placeholder="Ваш телефон" >
+    </div>
 
-   <button type="submit" class="btn btn-success btn-lg">Отправить заказ</button>
-   <button class="btn btn-primary btn-danger btn-lg" onclick="return cancel_order()">Очистить корзину</button>
-</form>
+      <div class="form-group">
+      <label>Адресс:</label>
+      <textarea name="order[address]" type="text" class="form-control" placeholder="Ваш адресс" ></textarea>
+    </div>
+
+     <button type="submit" class="btn btn-success btn-lg">Отправить заказ</button>
+     <button class="btn btn-primary btn-danger btn-lg" onclick="return cancel_order()">Очистить корзину</button>
+  </form>
+
+</div>
+
