@@ -38,7 +38,14 @@ post '/cart' do
 	erb :cart
 end
 
+post '/place_order' do
 
+	@c = Order.new params[:order]
+	@c.save	
+
+	erb :order_placed
+
+end
 
 def parse_orders_input orders_input
 
