@@ -29,11 +29,20 @@ post '/cart' do
 	@orders_input = params[:orders_input]
 	@items = parse_orders_input @orders_input
 
+	#выводим сообщение о том, что корзина пуста
+
+	if @items.length == 0
+		return erb :cart_is_empty
+	end
+
+	#выводим список продуктов по-умолчанию
+
 	@items.each do |item|
 		item[0] = Product.find(item[0])
 
 	end
 
+	#возвращаем представление по-умолчанию
 
 	erb :cart
 end
