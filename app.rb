@@ -56,6 +56,30 @@ post '/place_order' do
 
 end
 
+get '/admin' do
+	@allorders = Order.order 'created_at DESC'
+	@a = []
+
+	@allorders.each do |order|
+		
+			b = parse_orders_input order[:orders_input]
+
+			b.each do |b1|
+				b1[0] = Product.find(b1[0])
+			end
+
+			@a << b
+			
+			order[:orders_input] = @a
+	end
+
+	# @pizzainfo.each do |pizza|
+	# 	pizza[0] = Product.find(pizza[0])
+	# end
+
+	erb :admin
+end
+
 def parse_orders_input orders_input
 
 	s1 = orders_input.split(/,/)

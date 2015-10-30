@@ -1,0 +1,49 @@
+<h2>Все заказы</h2>
+<br />
+
+<table class="table table-striped">
+    <thead>
+    	<tr>
+    		<th>#</th>
+    		<th>Имя</th>
+    		<th>Телефон</th>
+    		<th>Адрес</th>
+    		<th>Заказ</th>
+        	<th>Цена</th>
+    	</tr>
+    </thead>
+
+    <tbody>
+
+    <% total_qty = 0 %>
+   
+    <%i = 0 %>
+      <% @allorders.each do |order|%>
+ 		<% order1 = '' %>
+ 		<% total_order = ''%>
+ 		<% price = 0 %>
+ 		<% total_price = 0 %>
+      	<% i = i + 1%>
+	    <tr>
+	          <th><%=i%></th>
+	          <th><%=order.name%></th>
+	          <th><%=order.phone%></th>
+	          <th><%=order.address%></th>
+
+	          <%@a[i-1].each do |pizza|%>
+
+	          	<%order1 = pizza[0].title + ' - ' + pizza[1]%> 
+	          	<%total_order = total_order + order1 + ', ' %>
+
+	          	<%price = pizza[0].price.to_i * pizza[1].to_i%>
+	          	<%total_price = total_price + price%>
+	          	
+	          	
+	    <%end%>
+	          <th><%=total_order%></th>
+	          <th><%=total_price%></th>
+                 
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
